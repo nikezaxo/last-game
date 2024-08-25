@@ -1,35 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const loadingElement = document.getElementById('loading');
-    const gameElement = document.getElementById('game');
-    const character1Img = document.getElementById('character1');
-    const characterImg = document.getElementById('character');
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingPage = document.getElementById('loading-page');
+    const mainPage = document.getElementById('main-page');
     const usernameElement = document.getElementById('username');
-  
-    // Simulate a loading screen for 2.5 seconds
-    setTimeout(() => {
-      // Apply a fade-out effect
-      loadingElement.style.transition = 'opacity 1s ease-out';
-      loadingElement.style.opacity = '0';
-  
-      // Wait for the fade-out transition to complete
-      setTimeout(() => {
-        loadingElement.style.display = 'none';
-        gameElement.style.display = 'flex';
-      }, 1000); // Matches the transition duration
-    }, 2500); // Initial delay
-  
-    // Check if Telegram Web App SDK is available
-    if (window.Telegram && window.Telegram.WebApp) {
-      const username = window.Telegram.WebApp.initDataUnsafe?.user?.username || 'Guest';
-      usernameElement.textContent = username;
-    } else {
-      usernameElement.textContent = 'Guest';
+    const characterElement = document.getElementById('character');
+
+    // Function to retrieve Telegram username from query parameters
+    function getTelegramUsername() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('username') || 'Guest';
     }
-  
-    // Handle click event to switch character images
-    character1Img.addEventListener('click', () => {
-      character1Img.style.display = 'none';
-      characterImg.style.display = 'block';
+
+    // Set the username in the main page
+    usernameElement.textContent = getTelegramUsername();
+
+    // Display loading page for 2.5 seconds, then show main page
+    setTimeout(() => {
+        loadingPage.classList.add('fade-out');
+        setTimeout(() => {
+            loadingPage.style.display = 'none';
+            mainPage.style.display = 'flex';
+        }, 1000); // Duration matches the fade-out animation
+    }, 2500); // 2500 milliseconds = 2.5 seconds
+
+    // Handle the tap/click event
+    characterElement.addEventListener('click', () => {
+        // Check if it's before 0 UTC
+        const now = new Date();
+        const hoursToMidnight = (24 - now.getUTCHours()) % 24;
+        
+        if (hoursToMidnight > 0) {
+            characterElement.src = 'assets/character.gif';
+        }
     });
-  });
-  
+});
