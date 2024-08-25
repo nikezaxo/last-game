@@ -1,0 +1,48 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Set background to black */
+    color: #fff; /* Set text color to white */
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Old cartoony font */
+}
+
+/* Loading Page */
+#loading-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Game Page */
+#main-page {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#username {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Old cartoony font */
+    color: #ffd700; /* Gold color for the text */
+}
+
+#character {
+    width: 150px;
+    height: auto;
+    margin: auto;
+}
