@@ -1,48 +1,73 @@
-/* General styles */
-body, html {
+/* General Styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     width: 100%;
     height: 100%;
+    background-color: #000; /* Black background */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Set background to black */
-    color: #fff; /* Set text color to white */
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Old cartoony font */
+    overflow: hidden;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Old cartoon style font */
+    color: #fff;
 }
 
-/* Loading Page */
+/* Loading Page Styles */
 #loading-page {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    position: fixed; /* Fixed position to cover the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background-color: #000; /* Black background */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2; /* Ensure it's above other content */
 }
 
-/* Main Game Page */
+#loading-image {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+}
+
+/* Main Page Styles */
 #main-page {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    position: relative;
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
 }
 
 #username {
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Old cartoony font */
-    color: #ffd700; /* Gold color for the text */
+    color: #ffffff; /* White color */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), /* Shadow for depth */
+                 0 0 10px rgba(204, 204, 202, 0.8), /* Outer glow */
+                 0 0 20px rgba(219, 219, 215, 0.6); /* Stronger glow */
 }
 
 #character {
-    width: 150px;
+    width: 200px; /* Ensure the character image fits well */
     height: auto;
-    margin: auto;
+}
+
+/* Fade-out Animation for Loading Page */
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
